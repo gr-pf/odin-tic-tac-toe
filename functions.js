@@ -5,7 +5,7 @@ export function askName() {
 
 export function askMark() {
   let mark;
-  while (!!["X", "O"].includes(mark)) {
+  while (!["X", "O"].includes(mark)) {
     mark = prompt("What mark do you choose ?");
   }
   return mark;
