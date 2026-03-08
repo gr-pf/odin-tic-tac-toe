@@ -14,9 +14,9 @@ export function Game() {
 
     const namePlayerOne = askName();
     const markPlayerOne = askMark();
-    this.playerOne = new Player(namePlayerOne, mark);
+    this.playerOne = new Player(namePlayerOne, markPlayerOne);
     const namePlayerTwo = askName();
     const markPlayerTwo = markPlayerOne === "X" ? "O" : "X";
-    this.playerTwo = new Player(namePlayerTwo, mark);
+    this.playerTwo = new Player(namePlayerTwo, markPlayerTwo);
   };
 }
