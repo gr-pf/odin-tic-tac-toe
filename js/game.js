@@ -3,7 +3,7 @@ import { Player } from "./player.js";
 import { askMark, askName } from "../functions.js";
 
 export function Game() {
-  this.state = "active";
+  this.state = "inactive";
   this.BoardGame = new BoardGame();
   this.playerOne = null;
   this.playerTwo = null;
