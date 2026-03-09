@@ -7,5 +7,34 @@
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <main class="wrapper">
+      <h1>Tic Tac Toe</h1>
+      <form action="">
+        <ul class="list-form">
+          <li class="form-item">
+            <label for="player-one">Name Player One</label>
+            <input id="player-one" name="player-one" type="text" required />
+          </li>
+          <li class="form-item">
+            <div class="radio-item">
+              <input type="radio" name="mark" id="markX" value="X" checked />
+              <label for="markX">X</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" name="mark" id="markO" value="O" />
+              <label for="markO">O</label>
+            </div>
+          </li>
+          <li class="form-item">
+            <label for="player-two">Name Player Two</label>
+            <input id="player-two" name="player-two" type="text" required />
+          </li>
+          <li class="form-item">
+            <button>New game</button>
+          </li>
+        </ul>
+      </form>
+    </main>
+  </body>
 </html>
