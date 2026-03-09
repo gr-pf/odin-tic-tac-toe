@@ -49,16 +49,16 @@ export function BoardGame() {
     res = 0;
     for (let i = 0; i < 3; i++) {
       res += this.gameBoard[i][i];
-      if (res === 3 || res === -3) {
-        return res;
-      }
+    }
+    if (res === 3 || res === -3) {
+      return res;
     }
     res = 0;
     for (let i = 0; i < 3; i++) {
       res += this.gameBoard[i][2 - i];
-      if (res === 3 || res === -3) {
-        return res;
-      }
+    }
+    if (res === 3 || res === -3) {
+      return res;
     }
     return this.markCounter === 9 ? "draw" : "continue";
   };
