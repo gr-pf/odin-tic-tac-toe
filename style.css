@@ -1,0 +1,45 @@
+:root {
+  --primary-color: #f5fbe6;
+  --secondary-color: #215e61;
+
+  --accent-color: #233d4d;
+  --secondary-accent-color: #fe7f2d;
+
+  --font-family: Roboto, Oxygen, Ubuntu;
+  --font-family-fallback: "Open Sans", "Helvetica Neue", sans-serif, system-ui;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  line-height: calc(1em + 0.5rem); /*option*/
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: var(--font-family), var(--font-family-fallback);
+  background-color: var(--primary-color);
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 950px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
