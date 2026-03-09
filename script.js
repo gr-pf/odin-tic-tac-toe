@@ -4,5 +4,5 @@ const metaGame = new Game();
 // window.currentMetaGame = metaGame;
 // window.currentMetaGame.initGame();
 // window.currentMetaGame.playGame();
-metaGame.initGame();
-metaGame.playGame();
+//metaGame.initGame();
+//metaGame.playGame();
