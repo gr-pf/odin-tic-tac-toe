@@ -1,6 +1,6 @@
 import { BoardGame } from "./boardgame.js";
 import { Player } from "./player.js";
-import { askMark, askName, askMove } from "../functions.js";
+import { askMark, askName, askMove } from "../functions-logic.js";
 
 export function Game() {
   this.state = "inactive";
