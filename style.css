@@ -83,3 +83,12 @@ li {
 .cell:hover {
   background-color: var(--secondary-accent-color);
 }
+
+.cell[fill="full"] {
+  opacity: 0.5;
+  user-select: none;
+}
+
+.cell[fill="full"]:hover {
+  background-color: var(--primary-color);
+}
