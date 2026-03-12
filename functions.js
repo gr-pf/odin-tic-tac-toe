@@ -1,24 +1,61 @@
-export function askName() {
-  const name = prompt("What is your name ?");
-  return name;
+import { Game } from "./js/game.js";
+
+/**
+ *
+ * @param {HTMLElement} cell
+ */
+export function cleanCell(cell) {
+  cell.innerText = "";
+  cell.setAttribute("fill", "empty");
 }
 
-export function askMark() {
-  let mark;
-  while (!["X", "O"].includes(mark)) {
-    mark = prompt("What mark do you choose ?");
-  }
-  return mark;
+/**
+ *
+ * @param {string} mark
+ * @param {Game} Game
+ * @returns
+ */
+export function checkMarkId(mark, Game) {
+  return mark === Game.playerOne.mark
+    ? Game.playerOne.name
+    : Game.playerTwo.name;
 }
 
-export function askMove() {
-  let row;
-  let column;
-  while (!["0", "1", "2"].includes(row)) {
-    row = prompt("What row do you choose ?");
+/**
+ *
+ * @param {HTMLElement} cell
+ * @param {Game} game
+ */
+export function clickCell(cell, Game) {
+  if (Game?.state !== "active") {
+    alert("You must init the game by completing the form!");
+    return;
   }
-  while (!["0", "1", "2"].includes(column)) {
-    column = prompt("What column do you choose ?");
+  if (cell.getAttribute("fill") === "full") {
+    alert("Cell is already used! Choose another one!");
+    return;
   }
-  return [row, column];
+  if (cell.getAttribute("fill") === "empty") {
+    cell.setAttribute("fill", "full");
+    cell.innerText = Game.playerTurn.mark;
+    const gridArea = [cell.id.slice(-2, -1), cell.id.slice(-1)];
+    Game.BoardGame.markGrid(Game.playerTurn.mark, gridArea);
+    Game.BoardGame.showGameBoard();
+  }
+  const currentPlayerName = checkMarkId(Game.playerTurn.mark, Game);
+  switch (Game.BoardGame.checkState()) {
+    case 3:
+    case -3:
+      alert(`${currentPlayerName} player win`);
+      Game.state = "inactive";
+      break;
+
+    case "draw":
+      alert("It's a draw");
+      Game.state = "inactive";
+      break;
+
+    default:
+      Game.changeTurn();
+  }
 }
