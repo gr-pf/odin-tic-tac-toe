@@ -132,3 +132,15 @@ li {
 .cell[fill="full"]:hover {
   background-color: var(--primary-color);
 }
+
+.cell[win-config="yes"] {
+  opacity: 1;
+  user-select: none;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.cell[win-config="yes"]:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
