@@ -43,7 +43,7 @@ export function clickCell(cell, Game) {
     Game.BoardGame.showGameBoard();
   }
   const currentPlayerName = checkMarkId(Game.playerTurn.mark, Game);
-  switch (Game.BoardGame.checkState()) {
+  switch (Game.BoardGame.checkState()[0]) {
     case 3:
     case -3:
       alert(`${currentPlayerName} player win`);
@@ -57,5 +57,26 @@ export function clickCell(cell, Game) {
 
     default:
       Game.changeTurn();
+  }
+}
+
+export function getConfigGrid(config) {
+  switch (config) {
+    case 1:
+      return ["cell1-00", "cell2-01", "cell3-02"];
+    case 2:
+      return ["cell4-10", "cell5-11", "cell6-12"];
+    case 3:
+      return ["cell7-20", "cell8-21", "cell9-22"];
+    case 4:
+      return ["cell1-00", "cell4-10", "cell7-20"];
+    case 5:
+      return ["cell2-01", "cell5-11", "cell8-21"];
+    case 6:
+      return ["cell3-02", "cell6-12", "cell9-22"];
+    case 7:
+      return ["cell1-00", "cell5-11", "cell9-22"];
+    case 8:
+      return ["cell7-20", "cell5-11", "cell3-02"];
   }
 }
