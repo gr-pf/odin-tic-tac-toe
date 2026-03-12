@@ -20,16 +20,7 @@ export function Game(formObjet) {
     this.playerTurn = this.playerOne;
   };
 
-  this.playRound = function () {
-    let round = false;
-    while (!round) {
-      const move = askMove();
-      if (this.playerTurn === this.playerOne) {
-        round = this.BoardGame.markGrid(this.playerOne.mark, move);
-      } else {
-        round = this.BoardGame.markGrid(this.playerTwo.mark, move);
-      }
-    }
+  this.changeTurn = function () {
     this.playerTurn =
       this.playerTurn === this.playerOne ? this.playerTwo : this.playerOne;
   };
