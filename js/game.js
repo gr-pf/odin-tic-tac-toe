@@ -13,11 +13,7 @@ export function Game(formObjet) {
     this.state = "active";
     this.BoardGame = new BoardGame();
 
-    //Essayer d'introduire une fonction imbriqué pour avoir une fonction asKNameP1 et askNameP2 tiré de la même fonction
-    //const namePlayerOne = askName();
-    //const markPlayerOne = askMark();
     this.playerOne = new Player(formObjet.playerOne, formObjet.mark);
-    //const namePlayerTwo = askName();
     const markPlayerTwo = formObjet.mark === "X" ? "O" : "X";
     this.playerTwo = new Player(formObjet.playerTwo, markPlayerTwo);
 
