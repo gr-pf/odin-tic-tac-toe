@@ -7,6 +7,7 @@ import { Game } from "./js/game.js";
 export function cleanCell(cell) {
   cell.innerText = "";
   cell.setAttribute("fill", "empty");
+  cell.setAttribute("win-config", "no");
 }
 
 /**
