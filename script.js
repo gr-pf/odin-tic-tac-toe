@@ -1,5 +1,5 @@
 import { Game } from "./js/game.js";
-import { cleanCell, clickCell } from "./functions-dom.js";
+import { cleanCell, clickCell } from "./functions.js";
 
 const cells = document.querySelectorAll(".cell");
 let currentGame;
