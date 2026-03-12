@@ -44,11 +44,14 @@ export function clickCell(cell, Game) {
     Game.BoardGame.showGameBoard();
   }
   const currentPlayerName = checkMarkId(Game.playerTurn.mark, Game);
-  switch (Game.BoardGame.checkState()[0]) {
+  const state = Game.BoardGame.checkState();
+  switch (state[0]) {
     case 3:
     case -3:
       alert(`${currentPlayerName} player win`);
       Game.state = "inactive";
+      const cells = getConfigGrid(state[1]);
+      colorWinningCell(cells);
       break;
 
     case "draw":
@@ -80,4 +83,11 @@ export function getConfigGrid(config) {
     case 8:
       return ["cell7-20", "cell5-11", "cell3-02"];
   }
+}
+
+export function colorWinningCell(cells) {
+  cells.forEach((cellId) => {
+    const cell = document.getElementById(cellId);
+    cell.setAttribute("win-config", "yes");
+  });
 }
