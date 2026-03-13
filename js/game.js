@@ -23,41 +23,4 @@ export function Game(formObjet) {
     this.playerTurn =
       this.playerTurn === this.playerOne ? this.playerTwo : this.playerOne;
   };
-
-  this.playGame = function () {
-    let currentState;
-    while (this.state === "active") {
-      this.playRound();
-      currentState = this.BoardGame.checkState();
-      if (currentState !== "continue") {
-        this.state = "inactive";
-      }
-    }
-    let playerName;
-    switch (currentState) {
-      case 3:
-        playerName =
-          this.playerOne.mark === "X"
-            ? this.playerOne.name
-            : this.playerTwo.name;
-        console.log(`${playerName} win !`);
-        break;
-
-      case -3:
-        playerName =
-          this.playerOne.mark === "O"
-            ? this.playerOne.name
-            : this.playerTwo.name;
-        console.log(`${playerName} win !`);
-
-        break;
-
-      case "draw":
-        console.log("It's a draw!");
-        break;
-
-      default:
-        console.log("Error");
-    }
-  };
 }
