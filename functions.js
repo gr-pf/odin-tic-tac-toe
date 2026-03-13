@@ -35,6 +35,11 @@ export function isEmpty(cell) {
   return true;
 }
 
+/**
+ *
+ * @param {HTMLElement} cell
+ * @param {Game} Game
+ */
 export function playMove(cell, Game) {
   cell.setAttribute("fill", "full");
   cell.innerText = Game.playerTurn.mark;
@@ -54,24 +59,14 @@ export function clickCell(cell, Game) {
   }
   if (!isEmpty(cell)) return;
   playMove(cell, Game);
-  const currentPlayerName = checkMarkId(Game.playerTurn.mark, Game);
-  const state = Game.BoardGame.checkState();
-  switch (state[0]) {
-    case 3:
-    case -3:
-      alert(`${currentPlayerName} player win`);
-      Game.state = "inactive";
-      const cells = getConfigGrid(state[1]);
-      colorWinningCell(cells);
-      break;
 
-    case "draw":
-      alert("It's a draw");
-      Game.state = "inactive";
-      break;
-
-    default:
-      Game.changeTurn();
+  const currentState = Game.handleGameState();
+  if (currentState?.win) {
+    alert(`${currentState.win[0]} player win`);
+    const cells = getConfigGrid(currentState.win[1]);
+    colorWinningCell(cells);
+  } else if (currentState?.draw) {
+    alert("It's a draw");
   }
 }
 
