@@ -118,6 +118,7 @@ li {
   font-size: auto;
   container-type: size;
   font-size: 10rem;
+  cursor: pointer;
 }
 
 .cell:hover {
