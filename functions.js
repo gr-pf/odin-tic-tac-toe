@@ -25,24 +25,35 @@ export function checkMarkId(mark, Game) {
 /**
  *
  * @param {HTMLElement} cell
+ * @returns {Boolean}
+ */
+export function isEmpty(cell) {
+  if (cell.getAttribute("fill") === "full") {
+    alert("Cell is already used! Choose another one!");
+    return false;
+  }
+  return true;
+}
+
+export function playMove(cell, Game) {
+  cell.setAttribute("fill", "full");
+  cell.innerText = Game.playerTurn.mark;
+  const gridArea = [cell.id.slice(-2, -1), cell.id.slice(-1)];
+  Game.BoardGame.markGrid(Game.playerTurn.mark, gridArea);
+}
+
+/**
+ *
+ * @param {HTMLElement} cell
  * @param {Game} game
  */
 export function clickCell(cell, Game) {
-  if (Game?.state !== "active") {
+  if (!Game?.isActive()) {
     alert("You must init the game by completing the form!");
     return;
   }
-  if (cell.getAttribute("fill") === "full") {
-    alert("Cell is already used! Choose another one!");
-    return;
-  }
-  if (cell.getAttribute("fill") === "empty") {
-    cell.setAttribute("fill", "full");
-    cell.innerText = Game.playerTurn.mark;
-    const gridArea = [cell.id.slice(-2, -1), cell.id.slice(-1)];
-    Game.BoardGame.markGrid(Game.playerTurn.mark, gridArea);
-    Game.BoardGame.showGameBoard();
-  }
+  if (!isEmpty(cell)) return;
+  playMove(cell, Game);
   const currentPlayerName = checkMarkId(Game.playerTurn.mark, Game);
   const state = Game.BoardGame.checkState();
   switch (state[0]) {
@@ -64,6 +75,11 @@ export function clickCell(cell, Game) {
   }
 }
 
+/**
+ *
+ * @param {number} config
+ * @returns {Array}
+ */
 export function getConfigGrid(config) {
   switch (config) {
     case 1:
@@ -85,6 +101,10 @@ export function getConfigGrid(config) {
   }
 }
 
+/**
+ *
+ * @param {NodeList} cells
+ */
 export function colorWinningCell(cells) {
   cells.forEach((cellId) => {
     const cell = document.getElementById(cellId);
