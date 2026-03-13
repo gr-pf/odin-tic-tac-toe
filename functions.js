@@ -62,9 +62,9 @@ export function clickCell(cell, Game) {
 
   const currentState = Game.handleGameState();
   if (currentState?.win) {
-    alert(`${currentState.win[0]} player win`);
     const cells = getConfigGrid(currentState.win[1]);
     colorWinningCell(cells);
+    setTimeout(() => alert(`${currentState.win[0]} player win`), 0);
   } else if (currentState?.draw) {
     alert("It's a draw");
   }
