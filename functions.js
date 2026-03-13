@@ -41,7 +41,7 @@ export function checkCellAvailable(cell) {
  * @param {Game} Game
  */
 export function playMove(cell, Game) {
-  cell.cell.dataset.fill = "full";
+  cell.dataset.fill = "full";
   cell.innerText = Game.playerTurn.mark;
   const gridArea = [cell.id.slice(-2, -1), cell.id.slice(-1)];
   Game.BoardGame.markGrid(Game.playerTurn.mark, gridArea);
