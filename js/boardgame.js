@@ -28,16 +28,21 @@ export function BoardGame() {
 
   this.checkState = function () {
     let res;
-    let gridConfig = 1;
     for (let r = 0; r < 3; r++) {
       res = 0;
       for (let c = 0; c < 3; c++) {
         res += this.gameBoard[r][c];
       }
       if (res === 3 || res === -3) {
-        return [res, gridConfig];
+        return {
+          res,
+          gridConfig: [
+            [r, 0],
+            [r, 1],
+            [r, 2],
+          ],
+        };
       }
-      gridConfig++;
     }
     for (let c = 0; c < 3; c++) {
       res = 0;
@@ -45,26 +50,44 @@ export function BoardGame() {
         res += this.gameBoard[r][c];
       }
       if (res === 3 || res === -3) {
-        return [res, gridConfig];
+        return {
+          res,
+          gridConfig: [
+            [0, c],
+            [1, c],
+            [2, c],
+          ],
+        };
       }
-      gridConfig++;
     }
     res = 0;
     for (let i = 0; i < 3; i++) {
       res += this.gameBoard[i][i];
     }
     if (res === 3 || res === -3) {
-      return [res, gridConfig];
+      return {
+        res,
+        gridConfig: [
+          [0, 0],
+          [1, 1],
+          [2, 2],
+        ],
+      };
     }
-    gridConfig++;
     res = 0;
     for (let i = 0; i < 3; i++) {
       res += this.gameBoard[i][2 - i];
     }
     if (res === 3 || res === -3) {
-      return [res, gridConfig];
+      return {
+        res,
+        gridConfig: [
+          [0, 2],
+          [1, 1],
+          [2, 0],
+        ],
+      };
     }
-    gridConfig++;
-    return this.markCounter === 9 ? ["draw"] : ["continue"];
+    return this.markCounter === 9 ? { res: "draw" } : { res: "continue" };
   };
 }
