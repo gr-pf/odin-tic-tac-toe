@@ -27,7 +27,7 @@ export function checkMarkId(mark, Game) {
  * @param {HTMLElement} cell
  * @returns {Boolean}
  */
-export function isEmpty(cell) {
+export function checkCellAvailable(cell) {
   if (cell.getAttribute("fill") === "full") {
     alert("Cell is already used! Choose another one!");
     return false;
@@ -57,7 +57,7 @@ export function clickCell(cell, Game) {
     alert("You must init the game by completing the form!");
     return;
   }
-  if (!isEmpty(cell)) return;
+  if (!checkCellAvailable(cell)) return;
   playMove(cell, Game);
 
   const currentState = Game.handleGameState();
