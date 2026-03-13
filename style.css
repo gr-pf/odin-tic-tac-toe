@@ -125,23 +125,23 @@ li {
   background-color: var(--secondary-accent-color);
 }
 
-.cell[fill="full"] {
+.cell[data-fill="full"] {
   opacity: 0.5;
   user-select: none;
 }
 
-.cell[fill="full"]:hover {
+.cell[data-fill="full"]:hover {
   background-color: var(--primary-color);
 }
 
-.cell[win-config="yes"] {
+.cell[data-win-config="yes"] {
   opacity: 1;
   user-select: none;
   background-color: var(--accent-color);
   color: var(--primary-color);
 }
 
-.cell[win-config="yes"]:hover {
+.cell[data-win-config="yes"]:hover {
   background-color: var(--accent-color);
   color: var(--primary-color);
 }
