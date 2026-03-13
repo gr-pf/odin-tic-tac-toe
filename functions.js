@@ -6,8 +6,8 @@ import { Game } from "./js/game.js";
  */
 export function cleanCell(cell) {
   cell.innerText = "";
-  cell.setAttribute("fill", "empty");
-  cell.setAttribute("win-config", "no");
+  cell.dataset.fill = "empty";
+  cell.dataset.winConfig = "no";
 }
 
 /**
@@ -28,7 +28,7 @@ export function checkMarkId(mark, Game) {
  * @returns {Boolean}
  */
 export function checkCellAvailable(cell) {
-  if (cell.getAttribute("fill") === "full") {
+  if (cell.dataset.fill === "full") {
     alert("Cell is already used! Choose another one!");
     return false;
   }
@@ -41,7 +41,7 @@ export function checkCellAvailable(cell) {
  * @param {Game} Game
  */
 export function playMove(cell, Game) {
-  cell.setAttribute("fill", "full");
+  cell.cell.dataset.fill = "full";
   cell.innerText = Game.playerTurn.mark;
   const gridArea = [cell.id.slice(-2, -1), cell.id.slice(-1)];
   Game.BoardGame.markGrid(Game.playerTurn.mark, gridArea);
@@ -62,9 +62,9 @@ export function clickCell(cell, Game) {
 
   const currentState = Game.handleGameState();
   if (currentState?.win) {
-    const cells = getConfigGrid(currentState.win[1]);
+    const cells = getConfigGrid(currentState.win.config);
     colorWinningCell(cells);
-    setTimeout(() => alert(`${currentState.win[0]} player win`), 0);
+    setTimeout(() => alert(`${currentState.win.name} win`), 0);
   } else if (currentState?.draw) {
     alert("It's a draw");
   }
@@ -89,6 +89,6 @@ export function getConfigGrid(coords) {
 export function colorWinningCell(cells) {
   cells.forEach((cellId) => {
     const cell = document.getElementById(cellId);
-    cell.setAttribute("win-config", "yes");
+    cell.dataset.winConfig = "yes";
   });
 }
