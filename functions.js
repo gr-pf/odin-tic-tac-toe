@@ -72,28 +72,14 @@ export function clickCell(cell, Game) {
 
 /**
  *
- * @param {number} config
+ * @param {Array} coords
  * @returns {Array}
  */
-export function getConfigGrid(config) {
-  switch (config) {
-    case 1:
-      return ["cell1-00", "cell2-01", "cell3-02"];
-    case 2:
-      return ["cell4-10", "cell5-11", "cell6-12"];
-    case 3:
-      return ["cell7-20", "cell8-21", "cell9-22"];
-    case 4:
-      return ["cell1-00", "cell4-10", "cell7-20"];
-    case 5:
-      return ["cell2-01", "cell5-11", "cell8-21"];
-    case 6:
-      return ["cell3-02", "cell6-12", "cell9-22"];
-    case 7:
-      return ["cell1-00", "cell5-11", "cell9-22"];
-    case 8:
-      return ["cell7-20", "cell5-11", "cell3-02"];
-  }
+export function getConfigGrid(coords) {
+  return coords.map(([r, c]) => {
+    const cell = document.querySelector([`[id$="-${r}${c}"]`]);
+    return cell.id;
+  });
 }
 
 /**
