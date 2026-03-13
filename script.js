@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//Il manque l'event listener - clickCell(cell, currentGame)
 cells.forEach((cell) => {
   cell.addEventListener("click", (event) => clickCell(cell, currentGame));
 });
