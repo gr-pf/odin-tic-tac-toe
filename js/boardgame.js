@@ -22,10 +22,6 @@ export function BoardGame() {
     return true;
   };
 
-  this.showGameBoard = function () {
-    console.log(this.gameBoard);
-  };
-
   this.checkState = function () {
     let res;
     for (let r = 0; r < 3; r++) {
