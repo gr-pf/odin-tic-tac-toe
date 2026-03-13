@@ -31,11 +31,11 @@ export function Game(formObjet) {
   this.handleGameState = function () {
     const currentPlayerName = this.playerTurn.name;
     const state = this.BoardGame.checkState();
-    switch (state[0]) {
+    switch (state.res) {
       case 3:
       case -3:
         this.state = "inactive";
-        return { win: [currentPlayerName, state[1]] };
+        return { win: [currentPlayerName, state.gridConfig] };
 
       case "draw":
         this.state = "inactive";
