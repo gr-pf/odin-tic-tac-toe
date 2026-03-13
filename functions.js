@@ -54,7 +54,7 @@ export function clickCell(cell, Game) {
     colorWinningCell(cells);
     setTimeout(() => alert(`${currentState.win.name} win`), 0);
   } else if (currentState?.draw) {
-    alert("It's a draw");
+    setTimeout(() => alert("It's a draw"), 0);
   }
 }
 
