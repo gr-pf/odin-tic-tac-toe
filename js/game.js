@@ -25,10 +25,6 @@ export function Game(formObjet) {
   };
 
   this.isActive = function () {
-    if (this.state !== "active") {
-      alert("You must init the game by completing the form!");
-      return false;
-    }
-    return true;
+    return this.state === "active";
   };
 }
