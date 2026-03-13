@@ -12,18 +12,6 @@ export function cleanCell(cell) {
 
 /**
  *
- * @param {string} mark
- * @param {Game} Game
- * @returns
- */
-export function checkMarkId(mark, Game) {
-  return mark === Game.playerOne.mark
-    ? Game.playerOne.name
-    : Game.playerTwo.name;
-}
-
-/**
- *
  * @param {HTMLElement} cell
  * @returns {Boolean}
  */
