@@ -27,4 +27,23 @@ export function Game(formObjet) {
   this.isActive = function () {
     return this.state === "active";
   };
+
+  this.handleGameState = function () {
+    const currentPlayerName = this.playerTurn.name;
+    const state = this.BoardGame.checkState();
+    switch (state[0]) {
+      case 3:
+      case -3:
+        this.state = "inactive";
+        return { win: [currentPlayerName, state[1]] };
+
+      case "draw":
+        this.state = "inactive";
+        return { draw: true };
+
+      default:
+        this.changeTurn();
+        return false;
+    }
+  };
 }
