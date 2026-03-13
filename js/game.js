@@ -23,4 +23,8 @@ export function Game(formObjet) {
     this.playerTurn =
       this.playerTurn === this.playerOne ? this.playerTwo : this.playerOne;
   };
+
+  this.isActive = function () {
+    return this.state === "active";
+  };
 }
