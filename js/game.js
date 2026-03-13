@@ -35,7 +35,7 @@ export function Game(formObjet) {
       case 3:
       case -3:
         this.state = "inactive";
-        return { win: [currentPlayerName, state.gridConfig] };
+        return { win: { name: currentPlayerName, config: state.gridConfig } };
 
       case "draw":
         this.state = "inactive";
